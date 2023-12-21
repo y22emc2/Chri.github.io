@@ -6,7 +6,70 @@
   <script type="module" src="https://pyscript.net/releases/2023.11.1/core.js"></script>
 </head>
 <body>
-    <py-script src=“https://github.com/y22emc2/Chri.github.io/blob/main/main.py”></py-script>
+    <py-script>
+      
+    t.right(135)
+    t.forward(x)
+    t.left(90)
+def gifts():            #画多个正方体礼物盒
+    t.hideturtle()      #隐藏画笔
+    t.penup()           #提笔
+    t.goto(-180,-150)    #将画笔移到（-180，-150）的位置准备画礼物盒
+    t.pendown()
+    t.pensize(5)         #画笔大小
+    c=['red','orange','yellow','green','cyan','blue','blueviolet']    #礼物盒的颜色
+    for i in c:          #循环画不同颜色的礼物盒
+        t.up()
+        t.forward(40)
+        t.down()
+        t.pencolor(i)
+        gift()
+def writes():       #写字：“圣诞快乐!”
+    t.pencolor("cyan")      #画笔颜色，天蓝色
+    t.hideturtle()          #隐藏画笔
+    t.up()
+    t.goto(-160,-250)       #从（-160，-250）开始写字
+    t.down()
+    t.write("Merry Christmas!",font=("Comic Sans MS",30,"bold"))   #开始写字，"Merry Christmas!"为要写的字，"Comic Sans MS"为字体，30为字的大小，bold为粗体（可自行修改要写的字）
+def treet(d,s):      #运用递归的方法画圣诞树
+    t.hideturtle()              #隐藏画笔
+    t.pencolor('limegreen')     #画笔颜色置为绿色，用来画树
+    t.pensize(5)                #画笔大小为5
+    t.speed(0)                  #最快速度画树（其实挺慢的）
+    if d<=0:
+        return
+    t.forward(s)
+    treet(d-1,s*0.8)
+    t.right(120)
+    treet(d-3,s*0.5)
+    t.right(120)
+    treet(d-3,s*0.5)
+    t.right(120)
+    t.backward(s)
+if __name__ == '__main__':      #主函数
+    '''
+    t.bgcolor('black')
+    t.up()
+    t.goto(0,-110)
+    t.down()
+    t.left(90)
+    treet(10,60)
+    t.done()
+    '''
+    turtle.bgcolor("black")
+    turtle.setup(1.0,1.0)
+    turtle.title("圣诞树（2023）")
+    # turtle.tracer(0)   #直接画完
+    t = turtle.Turtle()
+    t.screen.delay(0)    #加速画
+    writes1()
+    trees()         #画圣诞树
+    stares()        #画树上的星星
+    gifts()         #画礼物盒
+    writes()        #写祝福语
+    snow()          #下雪（画雪花）
+    turtle.mainloop()        #将画板停住（否则画完画会自动退出画画界面）
+    </py-script>
 </body>
   
 </html>
